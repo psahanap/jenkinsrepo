@@ -1,0 +1,45 @@
+{
+"AWSTemplateFormatVersion":"2010-09-09",
+"Description":"SG for Jenkins Project",
+"Parameters":{
+"myVPC":{
+"Type":"AWS::EC2::VPC::Id",
+"Description":"VpcID of existing VPC",
+"ConstraintDescription":"must be an existing VPC"
+}
+},
+"Resources":{
+"InstanceSecurityGroup" : {
+   "Type" : "AWS::EC2::SecurityGroup",
+   "Properties" : {
+      "GroupDescription" : "Allow http to client host",
+      "VpcId" : {"Ref" : "myVPC"},
+      "SecurityGroupIngress" : [{
+            "IpProtocol" : "tcp",
+            "FromPort" : "80",
+            "ToPort" : "80",
+            "CidrIp" : "0.0.0.0/0"
+         },
+            {"IpProtocol" : "tcp",
+            "FromPort" : "22",
+            "ToPort" : "22",
+            "CidrIp" : "0.0.0.0/0"
+            }],
+      "SecurityGroupEgress" : [{
+         "IpProtocol" : "tcp",
+         "FromPort" : "80",
+         "ToPort" : "80",
+         "CidrIp" : "0.0.0.0/0"
+      },
+            {"IpProtocol" : "tcp",
+            "FromPort" : "22",
+            "ToPort" : "22",
+            "CidrIp" : "0.0.0.0/0"}]
+   }
+}},
+
+"Outputs":{
+"SecurityGroupID":{
+"Value":{"Ref":"InstanceSecurityGroup"}
+}}
+}
