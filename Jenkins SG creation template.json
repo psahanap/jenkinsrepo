@@ -1,6 +1,6 @@
 {
 "AWSTemplateFormatVersion":"2010-09-09",
-"Description":"SG created for Jenkins Project",
+"Description":"SG creation template for Jenkins Project",
 "Parameters":{
 "myVPC":{
 "Type":"AWS::EC2::VPC::Id",
