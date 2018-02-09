@@ -8,6 +8,7 @@
 "ConstraintDescription":"must be an existing VPC"
 }
 },
+   
 "Resources":{
 "InstanceSecurityGroup" : {
    "Type" : "AWS::EC2::SecurityGroup",
