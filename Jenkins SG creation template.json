@@ -42,5 +42,6 @@
 "Outputs":{
 "SecurityGroupID":{
 "Value":{"Ref":"InstanceSecurityGroup"}
+   
 }}
 }
