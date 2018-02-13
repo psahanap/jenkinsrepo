@@ -46,5 +46,49 @@
                 {
                     "ParameterValue": "true", 
                     "ParameterKey": "EnableDnsHostnames"
+                },
+                {
+                    "ParameterValue": "198.165.0.1/28", 
+                    "ParameterKey": "PrivSubnet1CIDRBlock"
+                }, 
+                {
+                    "ParameterValue": "t2.micro", 
+                    "ParameterKey": "InstanceType"
+                },                {
+                    "ParameterValue": "T", 
+                    "ParameterKey": "KeyName"
+                }, 
+                {
+                    "ParameterValue": "0.0.0.0/0", 
+                    "ParameterKey": "SSHLocation"
+                },                {
+                    "ParameterValue": "/dev/sdf", 
+                    "ParameterKey": "Device"
+                }, 
+                {
+                    "ParameterValue": "false", 
+                    "ParameterKey": "DisableApiTermination"
+                },                
+		{
+                    "ParameterValue": "false", 
+                    "ParameterKey": "EbsOptimized"
+                }, 
+                {
+                    "ParameterValue": "stop", 
+                    "ParameterKey": "InstanceInitiatedShutdownBehavior"
+                },
+		{
+                    "ParameterValue": "false", 
+                    "ParameterKey": "Monitoring"
+                }, 
+                {
+                    "ParameterValue": "true", 
+                    "ParameterKey": "SourceDestCheck"
+                },
+		{
+                    "ParameterValue": "default", 
+                    "ParameterKey": "Tenancy"
                 }
 ]
+
+
