@@ -9,11 +9,11 @@ then
 else
 /usr/local/bin/aws cloudformation create-stack --stack-name test-SG-creation --template-body file:///opt/jenkins/subbranch/test/sg\ template.json.txt --parameters file:///opt/jenkins/subbranch/test/parameters.json --region ap-south-1
 fi
-while true
-do
+#while true
+#do
 /usr/local/bin/aws cloudformation describe-stack-events --stack-name test-SG-creation --region ap-south-1 | grep -iE 'ResourceStatus|ResourceType|LogicalResourceId'
 #if [ "ResourceStatus" == "UPDATE_COMPLETE" ]
 #then
 # break
 #fi
-done
+#done
