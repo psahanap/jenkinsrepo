@@ -19,6 +19,7 @@ if [ "$nooflines" -ne 2 ];
 then
 echo "Stack Creation is in Progress,Below are the events happening now"
 /usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 | grep -iE 'ResourceStatus|ResourceType|LogicalResourceId|PhysicalResourceId'
+sleep 4s
 else
 if [ "$nooflines" -eq 2 ];
 then
