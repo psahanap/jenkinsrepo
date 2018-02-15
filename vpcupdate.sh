@@ -18,7 +18,7 @@ if [ $status -eq 0 ]
 					/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 | grep -iE 'ResourceStatus|ResourceType|LogicalResourceId|PhysicalResourceId'
 					sleep 3s
 					else
-					if [ "$nooflines" -ge 2 ];
+					if [ "$nooflines" -ge 2 ] && [ "$nooflines" -eq 0 ];
 					then
 					echo "Stack Creation Completed"
 					break
