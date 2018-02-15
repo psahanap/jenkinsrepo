@@ -8,7 +8,10 @@ if [ $status -eq 0 ]
 		/usr/local/bin/aws cloudformation update-stack --stack-name test-vpc-creation --template-body file:///opt/jenkins/subbranch/test/vpc\ template.json.txt --parameters file:///opt/jenkins/subbranch/test/parameters.json --region us-east-2 --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
 				while true
 					do
-					/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 |  grep -iE 'ResourceStatus|ResourceType' |sed 's|[",:]||g' | grep -E 'ResourceStatus.*UPDATE_COMPLETE' > update
+					/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 |  grep -iE 'ResourceStatus|ResourceType' |sed 's|[",:]||g' | grep -E 'ResourceStatus.*UPDATE_COMPLETE*' > update
+					/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 |  grep -iE 'ResourceStatus|ResourceType' |sed 's|[",:]||g' | grep -E 'ResourceStatus.*UPDATE_IN_PROGRESS' > updatestart
+					cat updatestart
+					noupdate=`cat updatestart | wc -l`
 					cat update
 					nooflines=`cat update | wc -l`
 					echo "The Loop will continue until stack is completed/updated."
@@ -23,7 +26,7 @@ if [ $status -eq 0 ]
 					echo "Stack Creation Completed"
 					break
 					else
-					if [ "$nooflines" -eq 0 ] ;
+					if [ "$noupdate" -eq 0 ] ;
 					then
 					echo "(ValidationError) when calling the UpdateStack operation: No updates are to be performed."
 					break
