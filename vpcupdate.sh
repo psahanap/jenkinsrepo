@@ -12,13 +12,13 @@ if [ $status -eq 0 ]
 					cat update
 					nooflines=`cat update | wc -l`
 					echo "The Loop will continue until stack is completed/updated."
-					if [ "$nooflines" -ne 1 ];
+					if [ "$nooflines" -gt 0 ] && [ "$nooflines" -lt 2 ];
 					then
 					echo "Stack Creation is in Progress,Below are the events happening now"
 					/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 | grep -iE 'ResourceStatus|ResourceType|LogicalResourceId|PhysicalResourceId'
 					sleep 3s
 					else
-					if [ "$nooflines" -eq 1 ];
+					if [ "$nooflines" -ge 2 ];
 					then
 					echo "Stack Creation Completed"
 					break
@@ -46,13 +46,13 @@ else
 					cat lines
 					nooflines=`cat lines | wc -l`
 					echo "The Loop will continue until stack is completed/updated."
-						if [ "$nooflines" -ne 2 ];
+						if [ "$nooflines" -gt 0 ] && [ "$nooflines" -lt 2 ]
 					then
 						echo "Stack Creation is in Progress,Below are the events happening now"
 						/usr/local/bin/aws cloudformation describe-stack-events --stack-name test-vpc-creation --region us-east-2 | grep -iE 'ResourceStatus|ResourceType|LogicalResourceId|PhysicalResourceId'
 						sleep 3s
 					else
-						if [ "$nooflines" -eq 2 ];
+						if [ "$nooflines" -ge 2 ];
 					then
 						echo "Stack Creation Completed"
 						break
