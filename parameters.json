@@ -74,7 +74,7 @@
                     "ParameterKey": "EbsOptimized"
                 }, 
                 {
-                    "ParameterValue": "terminate", 
+                    "ParameterValue": "stop", 
                     "ParameterKey": "InstanceInitiatedShutdownBehavior"
                 },
 		{
